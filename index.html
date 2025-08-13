@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -16,12 +16,43 @@ body {
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
-
-    /* Reduce gradient banding */
-    background-image:
-      linear-gradient(135deg, #74b9ff, #0984e3),
-      repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 2px);
+    overflow: hidden;
+    position: relative;
 }
+
+/* Floating stopwatch icons */
+.floating-icon {
+    position: absolute;
+    font-size: 24px;
+    animation: float 20s linear infinite;
+    opacity: 0.3;
+    user-select: none;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Random placement and delay */
+.floating-icon:nth-child(1) { left: 10%; animation-delay: 0s; }
+.floating-icon:nth-child(2) { left: 25%; animation-delay: 5s; }
+.floating-icon:nth-child(3) { left: 40%; animation-delay: 2s; }
+.floating-icon:nth-child(4) { left: 55%; animation-delay: 7s; }
+.floating-icon:nth-child(5) { left: 70%; animation-delay: 3s; }
+.floating-icon:nth-child(6) { left: 85%; animation-delay: 9s; }
 
 .container {
     background: white;
@@ -31,6 +62,8 @@ body {
     text-align: center;
     max-width: 350px;
     width: 100%;
+    z-index: 10;
+    position: relative;
 }
 
 h1 {
@@ -84,6 +117,14 @@ h1 {
 </style>
 </head>
 <body>
+
+<!-- Floating Icons -->
+<div class="floating-icon">🕒</div>
+<div class="floating-icon">⏱️</div>
+<div class="floating-icon">⏰</div>
+<div class="floating-icon">🕓</div>
+<div class="floating-icon">🕔</div>
+<div class="floating-icon">⏱️</div>
 
 <div class="container">
     <h1>⏱ Stopwatch</h1>
@@ -166,4 +207,3 @@ lapBtn.addEventListener("click", recordLap);
 
 </body>
 </html>
-
